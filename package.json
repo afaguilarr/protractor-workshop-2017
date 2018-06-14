@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/afaguilarr/protractor-workshop-2017#readme",
   "dependencies": {
+    "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.3.2"
   },
   "devDependencies": {
