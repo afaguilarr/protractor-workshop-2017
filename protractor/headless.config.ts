@@ -6,12 +6,15 @@ export const config: Config = {
   SELENIUM_PROMISE_MANAGER: false,
   specs: ['../test/**/*.spec.js'],
   noGlobals: true,
-  getPageTimeout: 1000,
+  getPageTimeout: 30000,
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
       args: ['--headless', '--disable-gpu', '--window-size=800,600']
     }
+  },
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 120000
   },
   onPrepare: () => {
     browser.ignoreSynchronization = true;

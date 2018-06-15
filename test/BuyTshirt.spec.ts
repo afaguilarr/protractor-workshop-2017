@@ -22,11 +22,7 @@ describe('Buy a t-shirt', () => {
   const signInStepPage: SignInStepPage = new SignInStepPage();
   const summaryStepPage: SummaryStepPage = new SummaryStepPage();
 
-  beforeAll(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
-  });
-  
-  beforeEach (async () => {
+  beforeAll(async () => {
     await browser.get(webpage);
     await(browser.sleep(1000));
     await menuContentPage.goToTShirtMenu();
@@ -53,7 +49,7 @@ describe('Buy a t-shirt', () => {
     await(browser.sleep(1000));
     await bankPaymentPage.goToOrderResume();
     await(browser.sleep(1000));
-  })
+  });
 
   it('then should be bought a t-shirt', async () => {
     await expect(orderResumePage.order())
