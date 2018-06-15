@@ -24,31 +24,24 @@ describe('Buy a t-shirt', () => {
 
   beforeAll(async () => {
     await browser.get(webpage);
-    await(browser.sleep(1000));
+
     await menuContentPage.goToTShirtMenu();
-    await(browser.sleep(1000));
     await productListPage.goToTShirtDetail();
-    await(browser.sleep(1000));
     await productDetailPage.goToTShirtModal();
-    await(browser.sleep(1000));
     await productAddedModalPage.goToSummary();
-    await(browser.sleep(1000));
     await summaryStepPage.goToSignIn();
-    await(browser.sleep(1000));
+
     await signInStepPage.sendMail(email);
     await signInStepPage.sendPassword(password);
     await signInStepPage.signIn();
-    await(browser.sleep(1000));
+
     await addressStepPage.goToShipping();
-    await(browser.sleep(1000));
+
     await shippingStepPage.conditionsAgree();
-    await(browser.sleep(1000));
     await shippingStepPage.goToPayment();
-    await(browser.sleep(1000));
+
     await paymentStepPage.goToBank();
-    await(browser.sleep(1000));
     await bankPaymentPage.goToOrderResume();
-    await(browser.sleep(1000));
   });
 
   it('then should be bought a t-shirt', async () => {
