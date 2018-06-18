@@ -1,4 +1,5 @@
-import { ElementFinder, promise, element, by } from 'protractor';
+import { browser, protractor, ElementFinder, element, by } from 'protractor';
+const { ExpectedConditions } = protractor;
 
 export class ProductAddedModalPage {
   private get summaryButton(): ElementFinder {
@@ -6,7 +7,9 @@ export class ProductAddedModalPage {
       .css('[style*="display: block;"] .button-container > a'));
   }
 
-  public goToSummary(): promise.Promise<void> {
+  public async goToSummary(): Promise<void> {
+    const isClickable = await ExpectedConditions.elementToBeClickable(this.summaryButton);
+    await browser.wait(isClickable, 3000);
     return this.summaryButton.click();
   }
 }
