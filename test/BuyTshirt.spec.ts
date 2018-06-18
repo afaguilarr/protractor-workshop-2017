@@ -5,7 +5,7 @@ import { MenuContentPage, AddressStepPage,
   ProductListPage, ShippingStepPage, SignInStepPage,
   SummaryStepPage } from '../src/page';
 
-describe('Buy a t-shirt', () => {
+describe('Given I want to buy a t-shirt', () => {
 
   const webpage = 'http://automationpractice.com/';
   const email = 'aperdomobo@gmail.com';
@@ -22,30 +22,42 @@ describe('Buy a t-shirt', () => {
   const signInStepPage: SignInStepPage = new SignInStepPage();
   const summaryStepPage: SummaryStepPage = new SummaryStepPage();
 
-  beforeAll(async () => {
-    await browser.get(webpage);
+  describe('When I open the webpage', () => {
+    beforeAll(async() => {
+      await browser.get(webpage);
+    });
 
-    await menuContentPage.goToTShirtMenu();
-    await productListPage.goToTShirtDetail();
-    await productDetailPage.goToTShirtModal();
-    await productAddedModalPage.goToSummary();
-    await summaryStepPage.goToSignIn();
+    describe('and I decide to buy a t-shirt', () => {
+      beforeAll(async() => {
+        await menuContentPage.goToTShirtMenu();
+        await productListPage.goToTShirtDetail();
+        await productDetailPage.goToTShirtModal();
+        await productAddedModalPage.goToSummary();
+        await summaryStepPage.goToSignIn();
+      });
 
-    await signInStepPage.sendMail(email);
-    await signInStepPage.sendPassword(password);
-    await signInStepPage.signIn();
+      describe('and I sign In', () => {
+        beforeAll(async() => {
+          await signInStepPage.sendMail(email);
+          await signInStepPage.sendPassword(password);
+          await signInStepPage.signIn();
+        });
 
-    await addressStepPage.goToShipping();
+        describe('and I follow the payment process', () => {
+          beforeAll(async() => {
+            await addressStepPage.goToShipping();
+            await shippingStepPage.conditionsAgree();
+            await shippingStepPage.goToPayment();
+            await paymentStepPage.goToBank();
+            await bankPaymentPage.goToOrderResume();
+            });
 
-    await shippingStepPage.conditionsAgree();
-    await shippingStepPage.goToPayment();
-
-    await paymentStepPage.goToBank();
-    await bankPaymentPage.goToOrderResume();
-  });
-
-  it('then should be bought a t-shirt', async () => {
-    await expect(orderResumePage.order())
-   .toBe('Your order on My Store is complete.');
+          it('then the t-shirt order should be completed', async () => {
+            await expect(orderResumePage.order())
+              .toBe('Your order on My Store is complete.');
+          });
+        });
+      });
+    });
   });
 });
