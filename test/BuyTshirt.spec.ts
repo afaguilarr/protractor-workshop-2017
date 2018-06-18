@@ -50,7 +50,7 @@ describe('Given I want to buy a t-shirt', () => {
             await shippingStepPage.goToPayment();
             await paymentStepPage.goToBank();
             await bankPaymentPage.goToOrderResume();
-            });
+          });
 
           it('then the t-shirt order should be completed', async () => {
             await expect(orderResumePage.order())
