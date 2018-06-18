@@ -6,7 +6,7 @@ export class ShippingStepPage {
   }
 
   private get paymentButton(): ElementFinder {
-    return element(by.css('#form > p > button > span'));
+    return element(by.css('p > button > span'));
   }
 
   public conditionsAgree(): promise.Promise<void> {

@@ -4,7 +4,7 @@ const { ExpectedConditions } = protractor;
 export class ProductAddedModalPage {
   private get summaryButton(): ElementFinder {
     return element(by
-      .css('[style*="display: block;"] .button-container > a'));
+      .css('.button-container > a'));
   }
 
   public async goToSummary(): Promise<void> {
