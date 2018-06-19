@@ -3,7 +3,7 @@ import { element, by, ElementFinder, promise } from 'protractor';
 export class MenuContentPage {
   private get tShirtMenu(): ElementFinder {
     return element(by
-      .css('#block_top_menu > ul > li:nth-child(3) > a'));
+      .css('#block_top_menu > ul > li:nth-child(1) > a'));
   }
 
   public goToTShirtMenu(): promise.Promise<void> {

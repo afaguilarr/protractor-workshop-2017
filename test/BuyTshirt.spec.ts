@@ -10,6 +10,7 @@ describe('Given I want to buy a t-shirt', () => {
   const webpage = 'http://automationpractice.com/';
   const email = 'aperdomobo@gmail.com';
   const password = 'WorkshopProtractor';
+  const searchedProduct = 'Blouse';
   const menuContentPage: MenuContentPage = new MenuContentPage();
   const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
   const addressStepPage: AddressStepPage = new AddressStepPage();
@@ -27,10 +28,10 @@ describe('Given I want to buy a t-shirt', () => {
       await browser.get(webpage);
     });
 
-    describe('and I decide to buy a t-shirt', () => {
+    describe('and I decide to buy a product', () => {
       beforeAll(async() => {
         await menuContentPage.goToTShirtMenu();
-        await productListPage.goToTShirtDetail();
+        await productListPage.selectProduct(searchedProduct);
         await productDetailPage.goToTShirtModal();
         await productAddedModalPage.goToSummary();
         await summaryStepPage.goToSignIn();
@@ -52,7 +53,7 @@ describe('Given I want to buy a t-shirt', () => {
             await bankPaymentPage.goToOrderResume();
           });
 
-          it('then the t-shirt order should be completed', async () => {
+          it('then the product order should be completed', async () => {
             await expect(orderResumePage.order())
               .toBe('Your order on My Store is complete.');
           });
