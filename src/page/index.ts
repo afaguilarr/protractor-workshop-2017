@@ -10,3 +10,4 @@ export { ShippingStepPage } from './ShippingStep.page';
 export { SignInStepPage } from './SignInStep.page';
 export { SummaryStepPage } from './SummaryStep.page';
 export { PersonalInformationPage } from './PersonalInformation.page';
+export { IFramePracticePage } from './IFramePractice.page';
